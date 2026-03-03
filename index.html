@@ -1,11 +1,207 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Title -->
     <title>English-Janala-with-JS-API</title>
+
+    <!-- tailwind CSS -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <!-- DaisyUI -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- google font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+
+    <!-- fav icon -->
+    <link rel="shortcut icon" href="assets/logo.png" type="image/x-icon">
+
+    <style>
+        * {
+            font-family: "Poppins", sans-serif;
+        }
+
+        .font-bangla {
+            font-family: "Hind Siliguri", sans-serif;
+        }
+    </style>
+
 </head>
+
 <body>
-    
+    <!-- navbar section-->
+    <header class="flex justify-between bg-[#BADEFF] py-3 px-20">
+        <div class="nav-left flex items-center">
+            <span class="text-[20px] font-semibold text-[#18181B]">English</span>
+            <span><i class="fa-brands fa-windows text-2xl" style="color: rgb(54, 147, 220);"></i></span>
+            <span class="text-[#000000] text-[20px] font-bangla">জানালা</span>
+        </div>
+
+        <div class="nav-right flex gap-4">
+            <button class="btn text-[#422AD5] border border-[#422AD5]"><i class="fa-solid fa-circle-question"
+                    style="color: #422AD5;"></i> FAQ</button>
+
+            <button class="btn text-[#422AD5] border border-[#422AD5]"><i class="fa-solid fa-book-open"
+                    style="color: #422AD5;"></i> Learn</button>
+
+            <button class="btn text-[#422AD5] border border-[#422AD5]"><i class="fa-solid fa-right-from-bracket"
+                    style="color: #422AD5;"></i> Logout</button>
+        </div>
+    </header>
+
+    <!-- Bannar Section -->
+    <section class="flex items-center py-5 px-20">
+        <div class="bannar-left space-y-5">
+            <h3 class="text-5xl font-bold text-[#18181B]"><span class="text-[#00BCFF]">English</span> is Easy!!</h3>
+            <p>আজ থেকেই আপনার ভাষা শেখার যাত্রা শুরু করুন। আপনি যদি নতুন হন অথবা আপনার দক্ষতা বাড়াতে চান, আমাদের
+                Interactive Lessons
+                আপনাকে নিয়ে যাবে অন্য একটি Level এ</p>
+
+            <input class="w-[320px] text-[14px] text-[#18181B] p-2.5 rounded-md" type="text"
+                placeholder="Enter Your Name">
+            <br>
+            <input class="w-[320px] text-[#18181B] p-2.5 rounded-md" type="password" name="" id=""
+                placeholder=".........................">
+            <br>
+            <button class="btn bg-[#422AD5] text-[#E0E7FF] font-semibold text-[14px] rounded-md p-2.5">Get
+                Started</button>
+        </div>
+
+        <div class="bannar-right">
+            <img src="assets/hero-student.png" alt="">
+        </div>
+    </section>
+
+    <!-- vocabularies  section -->
+    <section class="mx-auto space-y-5 mt-[90px] mb-10">
+        <div class="text-center">
+            <h3 class="text-[36px] font-bold text-[#18181B] "><span class="text-[#00BCFF]">Let's</span> Learn
+                Vocabularies</h3>
+        </div>
+
+        <div class="flex flex-row justify-center gap-5">
+            <button class="btn text-[#422AD5] border border-[#422AD5]"><i class="fa-solid fa-book-open"
+                    style="color: #422AD5;"></i> Lesson -1</button>
+
+            <button class="btn text-[#422AD5] border border-[#422AD5]"><i class="fa-solid fa-book-open"
+                    style="color: #422AD5;"></i> Lesson -1</button>
+
+            <button class="btn text-[#422AD5] border border-[#422AD5]"><i class="fa-solid fa-book-open"
+                    style="color: #422AD5;"></i> Lesson -1</button>
+
+            <button class="btn text-[#422AD5] border border-[#422AD5]"><i class="fa-solid fa-book-open"
+                    style="color: #422AD5;"></i> Lesson -1</button>
+
+            <button class="btn text-[#422AD5] border border-[#422AD5]"><i class="fa-solid fa-book-open"
+                    style="color: #422AD5;"></i> Lesson -1</button>
+
+            <button class="btn text-[#422AD5] border border-[#422AD5]"><i class="fa-solid fa-book-open"
+                    style="color: #422AD5;"></i> Lesson -1</button>
+
+            <button class="btn text-[#422AD5] border border-[#422AD5]"><i class="fa-solid fa-book-open"
+                    style="color: #422AD5;"></i> Lesson -1</button>
+        </div>
+
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Frequently Asked section -->
+    <section class="mx-auto mt-[90px] mb-[90px] px-20">
+        <div class="text-center mb-5">
+            <h3 class="text-[36px] font-bold"><span class="text-[#00BCFF]">Frequently</span> Asked Questions</h3>
+        </div>
+
+        <div class="space-y-5">
+            <div class="bg-[#F8F8F8] rounded-xl p-2.5 shadow">
+                <div class="flex justify-between items-center">
+                    <h4 class="text-[#18181B] font-medium text-[16px]">1. How can I start learning English on this
+                        website?</h4>
+                    <button class="btn text-[16px] border-0">-</button>
+                </div>
+                <p>You can start by exploring our beginner lessons, interactive exercises, and quizzes. We also offer
+                    structured courses to
+                    guide you step by step.</p>
+            </div>
+
+            <div class="bg-[#F8F8F8] rounded-xl p-2.5 shadow">
+                <div class="flex justify-between items-center">
+                    <h4 class="text-[#18181B] font-medium text-[16px]">2. How can I start learning English on this
+                        website?</h4>
+                    <button class="btn text-[16px] border-0">-</button>
+                </div>
+                <p>You can start by exploring our beginner lessons, interactive exercises, and quizzes. We also offer
+                    structured
+                    courses to
+                    guide you step by step.</p>
+            </div>
+
+            <div class="bg-[#F8F8F8] rounded-xl p-2.5 shadow">
+                <div class="flex justify-between items-center">
+                    <h4 class="text-[#18181B] font-medium text-[16px]">3. How can I start learning English on this
+                        website?</h4>
+                    <button class="btn text-[16px] border-0">-</button>
+                </div>
+                <p>You can start by exploring our beginner lessons, interactive exercises, and quizzes. We also offer
+                    structured
+                    courses to
+                    guide you step by step.</p>
+            </div>
+
+            <div class="bg-[#F8F8F8] rounded-xl p-2.5 shadow">
+                <div class="flex justify-between items-center">
+                    <h4 class="text-[#18181B] font-medium text-[16px]">4. How can I start learning English on this
+                        website?</h4>
+                    <button class="btn text-[16px] border-0">-</button>
+                </div>
+                <p>You can start by exploring our beginner lessons, interactive exercises, and quizzes. We also offer
+                    structured
+                    courses to
+                    guide you step by step.</p>
+            </div>
+
+            <div class="bg-[#F8F8F8] rounded-xl p-2.5 shadow">
+                <div class="flex justify-between items-center">
+                    <h4 class="text-[#18181B] font-medium text-[16px]">5. How can I start learning English on this
+                        website?</h4>
+                    <button class="btn text-[16px] border-0">-</button>
+                </div>
+                <p>You can start by exploring our beginner lessons, interactive exercises, and quizzes. We also offer
+                    structured
+                    courses to
+                    guide you step by step.</p>
+            </div>
+        </div>
+    </section>
+
+
+    <footer>
+
+    </footer>
+
+
+
 </body>
+
 </html>
