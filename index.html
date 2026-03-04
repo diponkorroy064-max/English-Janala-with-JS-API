@@ -41,7 +41,7 @@
 
 </head>
 
-<body>
+<body class="">
     <!-- navbar section-->
     <header class="flex justify-between bg-[#BADEFF] py-3 px-20">
         <div class="nav-left flex items-center">
@@ -76,7 +76,7 @@
             <input class="w-[320px] text-[#18181B] p-2.5 rounded-md" type="password" name="" id=""
                 placeholder=".........................">
             <br>
-            <button class="btn bg-[#422AD5] text-[#E0E7FF] font-semibold text-[14px] rounded-md p-2.5">Get
+            <button class="btn btn-outline btn-primary font-semibold text-[14px] rounded-md p-2.5">Get
                 Started</button>
         </div>
 
@@ -87,39 +87,124 @@
 
     <!-- vocabularies  section -->
     <section class="mx-auto space-y-5 mt-[90px] mb-10">
+
         <div class="text-center">
             <h3 class="text-[36px] font-bold text-[#18181B] "><span class="text-[#00BCFF]">Let's</span> Learn
                 Vocabularies</h3>
         </div>
 
-        <div class="flex flex-row justify-center gap-5">
-            <button class="btn text-[#422AD5] border border-[#422AD5]"><i class="fa-solid fa-book-open"
-                    style="color: #422AD5;"></i> Lesson -1</button>
+        <div id="level-container" class="flex flex-row justify-center flex-wrap gap-5">
 
-            <button class="btn text-[#422AD5] border border-[#422AD5]"><i class="fa-solid fa-book-open"
-                    style="color: #422AD5;"></i> Lesson -1</button>
-
-            <button class="btn text-[#422AD5] border border-[#422AD5]"><i class="fa-solid fa-book-open"
-                    style="color: #422AD5;"></i> Lesson -1</button>
-
-            <button class="btn text-[#422AD5] border border-[#422AD5]"><i class="fa-solid fa-book-open"
-                    style="color: #422AD5;"></i> Lesson -1</button>
-
-            <button class="btn text-[#422AD5] border border-[#422AD5]"><i class="fa-solid fa-book-open"
-                    style="color: #422AD5;"></i> Lesson -1</button>
-
-            <button class="btn text-[#422AD5] border border-[#422AD5]"><i class="fa-solid fa-book-open"
-                    style="color: #422AD5;"></i> Lesson -1</button>
-
-            <button class="btn text-[#422AD5] border border-[#422AD5]"><i class="fa-solid fa-book-open"
-                    style="color: #422AD5;"></i> Lesson -1</button>
         </div>
 
     </section>
 
 
+    <!-- একটি Lesson Select করুন section -->
+    <section class="px-20 hidden">
+        <div class="bg-[#F8F8F8] rounded-3xl py-16 text-center space-y-5 shadow">
+            <p class="text-[#79716B] text-xl">আপনি এখনো কোন Lesson Select করেননি</p>
+            <p class="text-4xl font-bangla text-[#292524]">একটি Lesson Select করুন।</p>
+        </div>
+    </section>
 
 
+    <!-- নেক্সট Lesson এ যান -->
+    <section class="mt-[90px] px-20 hidden">
+        <div class="bg-[#F8F8F8] rounded-3xl py-16 text-center space-y-5 shadow">
+            <div class="flex justify-center"><img src="assets/alert-error.png" alt=""></div>
+            <p class="text-[#79716B] text-[16px]">এই Lesson এ এখনো কোন Vocabulary যুক্ত করা হয়নি।</p>
+            <p class="text-4xl font-bangla text-[#292524]">নেক্সট Lesson এ যান</p>
+        </div>
+    </section>
+
+
+    <!-- 6 card section -->
+    <section class="px-20 mx-auto mt-[90px]">
+
+        <section id="word-container" class="bg-[#F8F8F8] p-8 grid grid-cols-3 gap-8 shadow rounded-2xl">
+
+
+
+
+            <!-- <div class="bg-[#FFFFFF] rounded-2xl shadow p-5">
+                <div class="space-y-4 text-center">
+                    <h4 class="text-[32px] font-bold text-[#000000]">Eager</h4>
+                    <p class="text-[20px] text-[#000000]">Meaning /Pronounciation</p>
+                    <p class="font-bangla text-[24px] font-semibold text-[#18181B]">"আগ্রহী / ইগার"</p>
+                </div>
+                <div class="mt-5 flex justify-between">
+                    <button class="btn"><i class="fa-solid fa-circle-info"></i></button>
+                    <button class="btn"><i class="fa-solid fa-volume-high"></i></button>
+                </div>
+            </div>
+
+            <div class="bg-[#FFFFFF] rounded-2xl shadow p-5">
+                <div class="space-y-4 text-center">
+                    <h4 class="text-[32px] font-bold text-[#000000]">Hesitate</h4>
+                    <p class="text-[20px] text-[#000000]">Meaning /Pronounciation</p>
+                    <p class="font-bangla text-[24px] font-semibold text-[#18181B]">"দ্বিধা করা / হেজিটেট"</p>
+                </div>
+                <div class="mt-5 flex justify-between">
+                    <button class="btn"><i class="fa-solid fa-circle-info"></i></button>
+                    <button class="btn"><i class="fa-solid fa-volume-high"></i></button>
+                </div>
+            </div>
+
+            <div class="bg-[#FFFFFF] rounded-2xl shadow p-5">
+                <div class="space-y-4 text-center">
+                    <h4 class="text-[32px] font-bold text-[#000000]">Linger</h4>
+                    <p class="text-[20px] text-[#000000]">Meaning /Pronounciation</p>
+                    <p class="font-bangla text-[24px] font-semibold text-[#18181B]">"থেমে থাকা / বিলম্ব করা / লিঙ্গার"
+                    </p>
+                </div>
+                <div class="mt-5 flex justify-between">
+                    <button class="btn"><i class="fa-solid fa-circle-info"></i></button>
+                    <button class="btn"><i class="fa-solid fa-volume-high"></i></button>
+                </div>
+            </div>
+
+            <div class="bg-[#FFFFFF] rounded-2xl shadow p-5">
+                <div class="space-y-4 text-center">
+                    <h4 class="text-[32px] font-bold text-[#000000]">Nourish</h4>
+                    <p class="text-[20px] text-[#000000]">Meaning /Pronounciation</p>
+                    <p class="font-bangla text-[24px] font-semibold text-[#18181B]">"পুষ্টি যোগানো / নরিশ"</p>
+                </div>
+                <div class="mt-5 flex justify-between">
+                    <button class="btn"><i class="fa-solid fa-circle-info"></i></button>
+                    <button class="btn"><i class="fa-solid fa-volume-high"></i></button>
+                </div>
+            </div>
+
+            <div class="bg-[#FFFFFF] rounded-2xl shadow p-5">
+                <div class="space-y-4 text-center">
+                    <h4 class="text-[32px] font-bold text-[#000000]">Reluctant</h4>
+                    <p class="text-[20px] text-[#000000]">Meaning /Pronounciation</p>
+                    <p class="font-bangla text-[24px] font-semibold text-[#18181B]">"অনিচ্ছুক / রিলাকট্যান্ট"</p>
+                </div>
+                <div class="mt-5 flex justify-between">
+                    <button class="btn"><i class="fa-solid fa-circle-info"></i></button>
+                    <button class="btn"><i class="fa-solid fa-volume-high"></i></button>
+                </div>
+            </div>
+
+            <div class="bg-[#FFFFFF] rounded-2xl shadow p-5">
+                <div class="space-y-4 text-center">
+                    <h4 class="text-[32px] font-bold text-[#000000]">Vague</h4>
+                    <p class="text-[20px] text-[#000000]">Meaning /Pronounciation</p>
+                    <p class="font-bangla text-[24px] font-semibold text-[#18181B]">"অস্পষ্ট / ভেইগ"</p>
+                </div>
+
+                <div class="mt-5 flex justify-between">
+                    <button class="btn"><i class="fa-solid fa-circle-info"></i></button>
+                    <button class="btn"><i class="fa-solid fa-volume-high"></i></button>
+                </div>
+            </div> -->
+
+        </section>
+
+
+    </section>
 
 
 
@@ -195,13 +280,32 @@
         </div>
     </section>
 
+    <!-- footer section -->
+    <footer class="flex justify-between items-center px-20 py-25 bg-[#9bcbf53d]">
 
-    <footer>
+        <div class="space-y-2.5">
+            <h3><span class="text-[20px] font-semibold text-[#18181B]">English</span>
+                <span><i class="fa-brands fa-windows text-2xl" style="color: rgb(54, 147, 220);"></i></span>
+                <span class="text-[#000000] text-[20px] font-bangla">জানালা</span>
+            </h3>
 
+            <p class="text-[#546A7F]">ইংরেজি শিখুন সহজে</p>
+
+            <p class="text-[#546A7F]">Providing ED-Tech Applications since 2025</p>
+        </div>
+
+        <div class="space-y-2.5">
+            <h3 class="text-[20px] font-semibold">Follow us</h3>
+            <div class="text-xl">
+                <a href=""><i class="fa-brands fa-facebook"></i></a>
+                <a href=""><i class="fa-brands fa-youtube"></i></a>
+                <a href=""><i class="fa-brands fa-instagram"></i></a>
+                <a href=""><i class="fa-brands fa-github"></i></a>
+            </div>
+        </div>
     </footer>
 
-
-
+    <script src="file.js"></script>
 </body>
 
 </html>
