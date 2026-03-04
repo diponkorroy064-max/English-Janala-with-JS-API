@@ -37,11 +37,17 @@
         .font-bangla {
             font-family: "Hind Siliguri", sans-serif;
         }
+
+        .active {
+            background-color: #422AD5;
+            color: #FFFFFF;
+        }
     </style>
 
 </head>
 
 <body class="">
+
     <!-- navbar section-->
     <header class="flex justify-between bg-[#BADEFF] py-3 px-20">
         <div class="nav-left flex items-center">
@@ -51,16 +57,17 @@
         </div>
 
         <div class="nav-right flex gap-4">
-            <button class="btn text-[#422AD5] border border-[#422AD5]"><i class="fa-solid fa-circle-question"
-                    style="color: #422AD5;"></i> FAQ</button>
+            <button class="btn btn-outline btn-primary border border-[#422AD5]"><i
+                    class="fa-solid fa-circle-question"></i> FAQ</button>
 
-            <button class="btn text-[#422AD5] border border-[#422AD5]"><i class="fa-solid fa-book-open"
-                    style="color: #422AD5;"></i> Learn</button>
+            <button class="btn btn-outline btn-primary border border-[#422AD5]"><i class="fa-solid fa-book-open"></i>
+                Learn</button>
 
-            <button class="btn text-[#422AD5] border border-[#422AD5]"><i class="fa-solid fa-right-from-bracket"
-                    style="color: #422AD5;"></i> Logout</button>
+            <button class="btn btn-outline btn-primary border border-[#422AD5]"><i
+                    class="fa-solid fa-right-from-bracket"></i> Logout</button>
         </div>
     </header>
+
 
     <!-- Bannar Section -->
     <section class="flex items-center py-5 px-20">
@@ -86,7 +93,7 @@
     </section>
 
     <!-- vocabularies  section -->
-    <section class="mx-auto space-y-5 mt-[90px] mb-10">
+    <section class="mx-auto space-y-5 mt-[90px]">
 
         <div class="text-center">
             <h3 class="text-[36px] font-bold text-[#18181B] "><span class="text-[#00BCFF]">Let's</span> Learn
@@ -100,126 +107,56 @@
     </section>
 
 
-    <!-- একটি Lesson Select করুন section -->
-    <section class="px-20 hidden">
-        <div class="bg-[#F8F8F8] rounded-3xl py-16 text-center space-y-5 shadow">
-            <p class="text-[#79716B] text-xl">আপনি এখনো কোন Lesson Select করেননি</p>
-            <p class="text-4xl font-bangla text-[#292524]">একটি Lesson Select করুন।</p>
-        </div>
-    </section>
-
-
-    <!-- নেক্সট Lesson এ যান -->
-    <section class="mt-[90px] px-20 hidden">
-        <div class="bg-[#F8F8F8] rounded-3xl py-16 text-center space-y-5 shadow">
-            <div class="flex justify-center"><img src="assets/alert-error.png" alt=""></div>
-            <p class="text-[#79716B] text-[16px]">এই Lesson এ এখনো কোন Vocabulary যুক্ত করা হয়নি।</p>
-            <p class="text-4xl font-bangla text-[#292524]">নেক্সট Lesson এ যান</p>
-        </div>
+    <!-- spiner loading section -->
+    <section hidden id="spiner" class="flex justify-center items-center mt-5 ">
+        <span class="loading loading-bars loading-xl"></span>
     </section>
 
 
     <!-- 6 card section -->
-    <section class="px-20 mx-auto mt-[90px]">
+    <section class="px-20 mx-auto mt-10">
 
-        <section id="word-container" class="bg-[#F8F8F8] p-8 grid grid-cols-3 gap-8 shadow rounded-2xl">
+        <section id="word-container" class="bg-[#F8F8F8] p-5 grid grid-cols-3 gap-5 shadow rounded-2xl">
 
-
-
-
-            <!-- <div class="bg-[#FFFFFF] rounded-2xl shadow p-5">
-                <div class="space-y-4 text-center">
-                    <h4 class="text-[32px] font-bold text-[#000000]">Eager</h4>
-                    <p class="text-[20px] text-[#000000]">Meaning /Pronounciation</p>
-                    <p class="font-bangla text-[24px] font-semibold text-[#18181B]">"আগ্রহী / ইগার"</p>
+            <!-- একটি Lesson Select করুন section -->
+            <section class="col-span-full">
+                <div class="py-16 text-center space-y-5">
+                    <p class="text-[#79716B] text-xl">আপনি এখনো কোন Lesson Select করেন নি</p>
+                    <p class="text-4xl font-bold font-bangla text-[#292524]">একটি Lesson Select করুন।</p>
                 </div>
-                <div class="mt-5 flex justify-between">
-                    <button class="btn"><i class="fa-solid fa-circle-info"></i></button>
-                    <button class="btn"><i class="fa-solid fa-volume-high"></i></button>
-                </div>
-            </div>
-
-            <div class="bg-[#FFFFFF] rounded-2xl shadow p-5">
-                <div class="space-y-4 text-center">
-                    <h4 class="text-[32px] font-bold text-[#000000]">Hesitate</h4>
-                    <p class="text-[20px] text-[#000000]">Meaning /Pronounciation</p>
-                    <p class="font-bangla text-[24px] font-semibold text-[#18181B]">"দ্বিধা করা / হেজিটেট"</p>
-                </div>
-                <div class="mt-5 flex justify-between">
-                    <button class="btn"><i class="fa-solid fa-circle-info"></i></button>
-                    <button class="btn"><i class="fa-solid fa-volume-high"></i></button>
-                </div>
-            </div>
-
-            <div class="bg-[#FFFFFF] rounded-2xl shadow p-5">
-                <div class="space-y-4 text-center">
-                    <h4 class="text-[32px] font-bold text-[#000000]">Linger</h4>
-                    <p class="text-[20px] text-[#000000]">Meaning /Pronounciation</p>
-                    <p class="font-bangla text-[24px] font-semibold text-[#18181B]">"থেমে থাকা / বিলম্ব করা / লিঙ্গার"
-                    </p>
-                </div>
-                <div class="mt-5 flex justify-between">
-                    <button class="btn"><i class="fa-solid fa-circle-info"></i></button>
-                    <button class="btn"><i class="fa-solid fa-volume-high"></i></button>
-                </div>
-            </div>
-
-            <div class="bg-[#FFFFFF] rounded-2xl shadow p-5">
-                <div class="space-y-4 text-center">
-                    <h4 class="text-[32px] font-bold text-[#000000]">Nourish</h4>
-                    <p class="text-[20px] text-[#000000]">Meaning /Pronounciation</p>
-                    <p class="font-bangla text-[24px] font-semibold text-[#18181B]">"পুষ্টি যোগানো / নরিশ"</p>
-                </div>
-                <div class="mt-5 flex justify-between">
-                    <button class="btn"><i class="fa-solid fa-circle-info"></i></button>
-                    <button class="btn"><i class="fa-solid fa-volume-high"></i></button>
-                </div>
-            </div>
-
-            <div class="bg-[#FFFFFF] rounded-2xl shadow p-5">
-                <div class="space-y-4 text-center">
-                    <h4 class="text-[32px] font-bold text-[#000000]">Reluctant</h4>
-                    <p class="text-[20px] text-[#000000]">Meaning /Pronounciation</p>
-                    <p class="font-bangla text-[24px] font-semibold text-[#18181B]">"অনিচ্ছুক / রিলাকট্যান্ট"</p>
-                </div>
-                <div class="mt-5 flex justify-between">
-                    <button class="btn"><i class="fa-solid fa-circle-info"></i></button>
-                    <button class="btn"><i class="fa-solid fa-volume-high"></i></button>
-                </div>
-            </div>
-
-            <div class="bg-[#FFFFFF] rounded-2xl shadow p-5">
-                <div class="space-y-4 text-center">
-                    <h4 class="text-[32px] font-bold text-[#000000]">Vague</h4>
-                    <p class="text-[20px] text-[#000000]">Meaning /Pronounciation</p>
-                    <p class="font-bangla text-[24px] font-semibold text-[#18181B]">"অস্পষ্ট / ভেইগ"</p>
-                </div>
-
-                <div class="mt-5 flex justify-between">
-                    <button class="btn"><i class="fa-solid fa-circle-info"></i></button>
-                    <button class="btn"><i class="fa-solid fa-volume-high"></i></button>
-                </div>
-            </div> -->
+            </section>
 
         </section>
-
 
     </section>
 
 
+    <!-- Open the modal using ID.showModal() method -->
+    <section>
+        <dialog id="my_modal" class="modal">
+            <div class="modal-box">
+                <div id="details_container">
 
-
-
+                </div>
+                <div class="modal-action">
+                    <form method="dialog">
+                        <!-- if there is a button in form, it will close the modal -->
+                        <button class="btn">Close</button>
+                    </form>
+                </div>
+            </div>
+        </dialog>
+    </section>
 
 
     <!-- Frequently Asked section -->
-    <section class="mx-auto mt-[90px] mb-[90px] px-20">
+    <section class="mx-auto mt-[120px] mb-[90px] px-20">
         <div class="text-center mb-5">
             <h3 class="text-[36px] font-bold"><span class="text-[#00BCFF]">Frequently</span> Asked Questions</h3>
         </div>
 
         <div class="space-y-5">
-            <div class="bg-[#F8F8F8] rounded-xl p-2.5 shadow">
+            <div class="bg-[#F8F8F8] rounded-xl p-4 shadow">
                 <div class="flex justify-between items-center">
                     <h4 class="text-[#18181B] font-medium text-[16px]">1. How can I start learning English on this
                         website?</h4>
@@ -230,7 +167,7 @@
                     guide you step by step.</p>
             </div>
 
-            <div class="bg-[#F8F8F8] rounded-xl p-2.5 shadow">
+            <div class="bg-[#F8F8F8] rounded-xl p-4 shadow">
                 <div class="flex justify-between items-center">
                     <h4 class="text-[#18181B] font-medium text-[16px]">2. How can I start learning English on this
                         website?</h4>
@@ -242,7 +179,7 @@
                     guide you step by step.</p>
             </div>
 
-            <div class="bg-[#F8F8F8] rounded-xl p-2.5 shadow">
+            <div class="bg-[#F8F8F8] rounded-xl p-4 shadow">
                 <div class="flex justify-between items-center">
                     <h4 class="text-[#18181B] font-medium text-[16px]">3. How can I start learning English on this
                         website?</h4>
@@ -254,7 +191,7 @@
                     guide you step by step.</p>
             </div>
 
-            <div class="bg-[#F8F8F8] rounded-xl p-2.5 shadow">
+            <div class="bg-[#F8F8F8] rounded-xl p-4 shadow">
                 <div class="flex justify-between items-center">
                     <h4 class="text-[#18181B] font-medium text-[16px]">4. How can I start learning English on this
                         website?</h4>
@@ -266,7 +203,7 @@
                     guide you step by step.</p>
             </div>
 
-            <div class="bg-[#F8F8F8] rounded-xl p-2.5 shadow">
+            <div class="bg-[#F8F8F8] rounded-xl p-4 shadow">
                 <div class="flex justify-between items-center">
                     <h4 class="text-[#18181B] font-medium text-[16px]">5. How can I start learning English on this
                         website?</h4>
@@ -279,6 +216,7 @@
             </div>
         </div>
     </section>
+
 
     <!-- footer section -->
     <footer class="flex justify-between items-center px-20 py-25 bg-[#9bcbf53d]">
