@@ -145,7 +145,7 @@ const displayLessions = (lessonns) => {
         // 3. create element---
         const btnDiv = document.createElement('div');
         btnDiv.innerHTML = `
-            <button id="lesson-btn-${lesson.level_no}" onclick = "loadLevelWord(${lesson.level_no})" class="btn btn-outline btn-primary border border-[#422AD5] lesson-btns"><i class="fa-solid fa-book-open"></i>Lesson -${lesson.level_no}</button>
+            <button id="lesson-btn-${lesson.level_no}" onclick = "loadLevelWord(${lesson.level_no})" class="btn btn-outline btn-primary border border-[#422AD5] lesson-btns"><i class="fa-solid fa-book-open"></i>Lesson - ${lesson.level_no}</button>
         `;
 
         // 4. appendChild---
@@ -153,7 +153,6 @@ const displayLessions = (lessonns) => {
     });
 
 }
-
 
 loadLessions();
 
