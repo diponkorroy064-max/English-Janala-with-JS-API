@@ -1,68 +1,128 @@
-const loadLessions = () => {
-    fetch("https://openapi.programming-hero.com/api/levels/all")
-        .then((res) => res.json())
-        .then((json) => displayLessions(json.data));
+// **** lesson buttons related function----
+const loadLessionsBtn = async () => {
+    // promise of response---
+    const res = await fetch("https://openapi.programming-hero.com/api/levels/all");
+    // promise of json data---
+    const json = await res.json();
+    displayLessionsBtn(json.data);
+};
+loadLessionsBtn();
+
+// **** lesson buttons related function----
+const displayLessionsBtn = (lessons) => {
+    // console.log(lessons);
+    // 1. get the container and empty---
+    const levelContainer = document.getElementById("level-container");
+
+    levelContainer.innerHTML = "";
+
+    // 2. get into every lession---
+    lessons.forEach(lesson => {
+        // console.log(lesson);
+        // 3. create a element---
+        const btnDiv = document.createElement('div');
+        btnDiv.innerHTML = `
+            <button id="lesson-btn-${lesson.level_no}" onclick = "loadLevelWordCards(${lesson.level_no})" class="btn btn-outline btn-primary border border-[#422AD5] lesson-btns"><i class="fa-solid fa-book-open"></i>Lesson - ${lesson.level_no}</button>
+        `;
+
+        // 4. appendChild---
+        levelContainer.appendChild(btnDiv);
+    });
 };
 
-
+// **** Active lessions button related function----
 const removeActive = () => {
     const lessonBtns = document.querySelectorAll('.lesson-btns');
     // console.log(lessonBtns);
     lessonBtns.forEach(btn => btn.classList.remove("active"));
-}
+};
 
 
-const loadLevelWord = (id) => {
+
+// #### loading all words based on id----
+const loadLevelWordCards = async (id) => {
     // console.log(id);
 
     manageSpiner(true);
 
     const url = `https://openapi.programming-hero.com/api/level/${id}`;
-
     // console.log(url);
 
-    fetch(url)
-        .then((res) => res.json())
-        .then((data) => {
-            removeActive();   //remove all active class---
-            const clickBtn = document.getElementById(`lesson-btn-${id}`);
-            clickBtn.classList.add('active'); //add active class---
-            // console.log(clickBtn);
+    const res = await fetch(url);
+    const json = await res.json();
+    // console.log(json.data);
 
-            displayLevelWord(data.data)
-        });
+    removeActive();   //remove all active class---
+    const clickBtn = document.getElementById(`lesson-btn-${id}`);
+    clickBtn.classList.add('active');   //add active class---
+    // console.log(clickBtn);
+
+    // manageSpiner(true);
+    displayLevelWordCards(json.data);
+};
+
+// #### display all cards----
+const displayLevelWordCards = (wordsArr) => {
+    // console.log(wordsArr);
+
+    const wordContainer = document.getElementById('word-container');
+    wordContainer.innerHTML = "";
+
+    // এই Lesson এ এখনো কোন Vocabulary যুক্ত করা হয়নি।----
+    if (wordsArr.length == 0) {
+        wordContainer.innerHTML = `
+        <div class="col-span-full text-center space-y-5">
+        <div class="flex justify-center"><img src="assets/alert-error.png" alt="">
+        </div>
+        <p class="text-[#79716B] text-[16px]">এই Lesson এ এখনো কোন Vocabulary যুক্ত করা হয়নি।</p>
+        <p class="text-4xl font-bangla text-[#292524]">নেক্সট Lesson এ যান</p>
+        </div>
+        `;
+        manageSpiner(false);
+        return;
+    }
+
+    // all cards rendering----
+    wordsArr.forEach((word) => {
+        // console.log(word);
+
+        const card = document.createElement('div');
+        card.className = "bg-[#FFFFFF] rounded-2xl shadow p-5";
+        card.innerHTML = `
+        <div class="space-y-4 text-center">
+
+        <h4 class="text-[32px] font-bold text-[#000000]">${word.word ? word.word : "Word Not Found"}</h4>
+
+        <p class="text-[20px] text-[#000000]">Meaning /Pronounciation</p>
+
+        <p class="font-bangla text-[24px] font-semibold text-[#18181B]">"${word.meaning ? word.meaning : "NOT FOUND"}/${word.pronunciation ? word.pronunciation : "NOT FOUND PRONUNCIATION"}"</p>
+        </div>
+
+        <div class="mt-5 flex justify-between">
+        <button onclick="loadWordDetailModals(${word.id})" class="btn"><i class="fa-solid fa-circle-info"></i></button>
+
+        <button onclick="pronounceWord('${word.word}')" class="btn"><i class="fa-solid fa-volume-high"></i></button>
+        </div>
+        `;
+        wordContainer.appendChild(card);
+    });
+    manageSpiner(false);
 };
 
 
-const loadWordDetail = async (id) => {
+
+// @@@ Load Modal detail worlds----
+const loadWordDetailModals = async (id) => {
     const url = `https://openapi.programming-hero.com/api/word/${id}`;
     // console.log(url);
     const res = await fetch(url);
     const details = await res.json();
     // console.log(details);
-    displayWordDetail(details.data);
-}
-
-
-const createElements = (arr) => {
-    const htmlElements = arr.map((el) => `<span class="btn">${el}</span>`);
-    return htmlElements.join(" ");
+    displayWordDetailModals(details.data);
 };
 
-
-const manageSpiner = (status) => {
-    if (status == true) {
-        document.getElementById('spiner').removeAttribute('hidden');
-        document.getElementById('word-container').getAttribute('hidden');
-    }
-    else {
-        document.getElementById('word-container').getAttribute('hidden');
-        document.getElementById('spiner').removeAttribute('hidden');
-    }
-};
-
-
-const displayWordDetail = (word) => {
+// @@@ display word details by modal----
+const displayWordDetailModals = (word) => {
     // console.log(word);
 
     const detailsContainer = document.getElementById('details_container');
@@ -86,77 +146,34 @@ const displayWordDetail = (word) => {
     document.getElementById('my_modal').showModal();
 };
 
-
-const displayLevelWord = (words) => {
-    // console.log(words);
-
-    const wordContainer = document.getElementById('word-container');
-    wordContainer.innerHTML = "";
-
-    // const nextLesson = document.getElementById('next-lesson');
-    if (words.length == 0) {
-        wordContainer.innerHTML = `
-        <div class="col-span-full text-center space-y-5">
-        <div class="flex justify-center"><img src="assets/alert-error.png" alt="">
-        </div>
-        <p class="text-[#79716B] text-[16px]">এই Lesson এ এখনো কোন Vocabulary যুক্ত করা হয়নি।</p>
-        <p class="text-4xl font-bangla text-[#292524]">নেক্সট Lesson এ যান</p>
-        </div>
-        `;
-        manageSpiner(false);
-        return;
+// @@@ show synnomyms in Modals from Array----
+const createElements = (arr) => {
+    if (arr.length == 0) {
+        return "No Synnonyms";
     }
-
-    words.forEach((word) => {
-        // console.log(word);
-
-        const card = document.createElement('div');
-        card.className = "bg-[#FFFFFF] rounded-2xl shadow p-5";
-        card.innerHTML = `
-        <div class="space-y-4 text-center">
-        <h4 class="text-[32px] font-bold text-[#000000]">${word.word ? word.word : "Word Not Found"}</h4>
-        <p class="text-[20px] text-[#000000]">Meaning /Pronounciation</p>
-
-        <p class="font-bangla text-[24px] font-semibold text-[#18181B]">"${word.meaning ? word.meaning : "NOT FOUND"}/${word.pronunciation ? word.pronunciation : "NOT FOUND PRONUNCIATION"}"</p>
-        </div>
-
-        <div class="mt-5 flex justify-between">
-        <button onclick="loadWordDetail(${word.id})" class="btn"><i class="fa-solid fa-circle-info"></i></button>
-
-        <button class="btn"><i class="fa-solid fa-volume-high"></i></button>
-        </div>
-        `;
-
-        wordContainer.appendChild(card);
-
-    });
-    manageSpiner(false);
+    else {
+        const htmlElements = arr.map((el) => `<span class="badge badge-outline badge-warning">${el}</span>`);
+        return htmlElements.join(" ");
+    }
 };
 
 
-const displayLessions = (lessonns) => {
-    // 1. get the data and empty---
-    const levelContainer = document.getElementById("level-container");
 
-    levelContainer.innerText = "";
-
-    // 2. get into every lession---
-    lessonns.forEach(lesson => {
-        // 3. create element---
-        const btnDiv = document.createElement('div');
-        btnDiv.innerHTML = `
-            <button id="lesson-btn-${lesson.level_no}" onclick = "loadLevelWord(${lesson.level_no})" class="btn btn-outline btn-primary border border-[#422AD5] lesson-btns"><i class="fa-solid fa-book-open"></i>Lesson - ${lesson.level_no}</button>
-        `;
-
-        // 4. appendChild---
-        levelContainer.appendChild(btnDiv);
-    });
-
-}
-
-loadLessions();
+// ===> Spiner Loading Functionalities----
+const manageSpiner = (status) => {
+    if (status == true) {
+        document.getElementById('spiner').removeAttribute('hidden');
+        document.getElementById('word-container').setAttribute('hidden', 'string');
+    }
+    else {
+        document.getElementById('spiner').setAttribute('hidden', 'string');
+        document.getElementById('word-container').removeAttribute('hidden');
+    }
+};
 
 
+
+// &&&& Implement Search Button Functionality----
 document.getElementById('btn-search').addEventListener('click', () => {
     removeActive();
 
@@ -171,7 +188,15 @@ document.getElementById('btn-search').addEventListener('click', () => {
             // console.log(allWords);
             const filterWords = allWords.filter(word => word.word.toLowerCase().includes(searchValue));
             // console.log(filterWords);
-            displayLevelWord(filterWords);
+            displayLevelWordCards(filterWords);
         });
 });
+
+
+// ###==> Speaking functionality in card's sound btn----
+function pronounceWord(word) {
+    const utterance = new SpeechSynthesisUtterance(word);
+    utterance.lang = "en-EN"; // English
+    window.speechSynthesis.speak(utterance);
+};
 
